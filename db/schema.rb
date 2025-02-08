@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_08_040453) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_08_042258) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -37,10 +37,22 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_040453) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "clients_management_clients", force: :cascade do |t|
+    t.string "name", limit: 128, null: false
+    t.boolean "is_active", default: false, null: false
+    t.integer "admin_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_clients_management_clients_on_admin_user_id", unique: true
+    t.index ["name"], name: "index_clients_management_clients_on_name", unique: true
+  end
+
   create_table "test_users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "clients_management_clients", "admin_users"
 end
