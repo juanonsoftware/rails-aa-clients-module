@@ -3,3 +3,5 @@ app/models/module_clients/client.rb
 app/models/module_clients/domain.rb
 db/migrate/20250208042258_adding_clients_table.rb
 db/migrate/20250208072035_adding_client_domains_table.rb
+spec/models/module_clients/client_spec.rb
+spec/models/module_clients/domain_spec.rb
