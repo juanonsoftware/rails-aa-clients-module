@@ -1,0 +1,5 @@
+app/admin/module_clients_clients.rb
+app/models/module_clients/client.rb
+app/models/module_clients/domain.rb
+db/migrate/20250208042258_adding_clients_table.rb
+db/migrate/20250208072035_adding_client_domains_table.rb
