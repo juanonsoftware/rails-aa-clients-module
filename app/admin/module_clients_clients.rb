@@ -1,11 +1,13 @@
 ActiveAdmin.register ModuleClients::Client, as: 'client' do
-  permit_params :name, :is_active, :admin_user_id,
+  permit_params :name, :contact_email, :contact_phone_number, :details, :is_active, :admin_user_id,
                 :domains_attributes => [:id, :name, :is_active, :_destroy]
 
   index do
     selectable_column
     id_column
     column :name
+    column :contact_email
+    column :contact_phone_number
     column :admin_user
     column :created_at
     column :updated_at
@@ -15,6 +17,9 @@ ActiveAdmin.register ModuleClients::Client, as: 'client' do
   show do
     attributes_table do
       row :name
+      row :contact_email
+      row :contact_phone_number
+      row :details
       row :admin_user
       row :is_active
       row :created_at
@@ -34,7 +39,7 @@ ActiveAdmin.register ModuleClients::Client, as: 'client' do
     active_admin_comments
   end
 
-  action_item :new, only: :show do
+  action_item :create_another, only: :show do
     link_to "Create Another", new_admin_client_path
   end
 
@@ -43,6 +48,9 @@ ActiveAdmin.register ModuleClients::Client, as: 'client' do
 
     f.inputs do
       f.input :name
+      f.input :contact_email
+      f.input :contact_phone_number
+      f.input :details
       f.input :admin_user, as: :select, collection: AdminUser.all.map { |admin_user| [admin_user.email, admin_user.id] }
       f.input :is_active
     end
