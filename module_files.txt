@@ -6,3 +6,4 @@ db/migrate/20250208072035_adding_client_domains_table.rb
 db/migrate/20250209075837_adding_info_to_clients.rb
 spec/models/module_clients/client_spec.rb
 spec/models/module_clients/domain_spec.rb
+spec/factories/module_clients/client.rb

@@ -8,6 +8,14 @@ RSpec.describe ModuleClients::Client, type: :model do
 
   describe 'Validations' do
     it { should validate_presence_of(:name) }
+    it { should allow_value('huanhvhd@gmail.com').for(:contact_email) }
+    it { should_not allow_value('invalid-email.com').for(:contact_email) }
+
+    # Test valid numbers (international and national formats)
+    it { should allow_value('+15551234567', '1 (555) 123-4567', '1-555-123-4567', '5551234567', '555-123-4567', '555 123 4567').for(:contact_phone_number) } # US examples
+
+    # Test invalid numbers
+    it { should_not allow_value('invalid_phone_number', '123', '555-123-456', '555-1234').for(:contact_phone_number) }
 
     context 'general' do
       let(:admin_user) { AdminUser.new(email: 'admin@example.com') }
