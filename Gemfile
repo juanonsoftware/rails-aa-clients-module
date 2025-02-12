@@ -70,3 +70,6 @@ gem "sassc-rails"
 
 gem 'valid_email2'
 gem 'phonelib'
+gem "chartkick"
+gem "groupdate"
+
